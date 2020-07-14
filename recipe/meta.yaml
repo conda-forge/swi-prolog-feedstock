@@ -12,7 +12,7 @@ source:
   git_rev: V{{ version }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or osx]
 
 requirements:
