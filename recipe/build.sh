@@ -10,13 +10,14 @@ export LDFLAGS="-L${PREFIX}/lib"
 export CPPFLAGS="-I${PREFIX}/include"
 
 
-./prepare --yes
-./configure --prefix=$PREFIX
+#./prepare --yes
+#./configure --prefix=$PREFIX
+cmake --prefix=$PREFIX $BUILD_PREFIX
 make VERBOSE=1
 make install
-curdir=${PWD}
-for package in packages/*; do
-    echo "Package: $package"
-    cd $curdir/$package && ./configure --prefix=$PREFIX && make && (make install || true)
-done
+#curdir=${PWD}
+#for package in packages/*; do
+#    echo "Package: $package"
+#    cd $curdir/$package && ./configure --prefix=$PREFIX && make && (make install || true)
+#done
 
