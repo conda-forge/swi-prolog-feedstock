@@ -26,14 +26,14 @@ requirements:
     - make
     - cmake
     - ninja
-    - libjpeg
+    - libjpeg-turbo
     - ncurses
-    - libopenssl
+    - libopenssl-static
     - zlib
     - pkgconfig
-    - uuid
+    - libuuid
     - libarchive
-    - libyaml 
+    - yaml 
   host:
     - curl
     - openjdk
@@ -51,7 +51,8 @@ test:
 
 about:
   home: https://github.com/SWI-Prolog/swipl-devel
-  license: Simplified BSD
+  license: BSD-2-Clause
+  license_file: LICENSE
   summary: A comprehensive Prolog implementation
 
 extra:
