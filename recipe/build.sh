@@ -14,7 +14,7 @@ export CPPFLAGS="-I${PREFIX}/include"
 #./configure --prefix=$PREFIX
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX="${PREFIX}" -SCMAKE_BUILD_TYPE=Release
+cmake -DCMAKE_INSTALL_PREFIX="${PREFIX}" -SCMAKE_BUILD_TYPE=Release ..
 #cmake --prefix=$PREFIX $BUILD_PREFIX
 make VERBOSE=1
 make install
