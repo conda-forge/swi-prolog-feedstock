@@ -10,7 +10,8 @@ source:
   # Makes use of git_url as it needs submodules from git, not available in archive 
   # https://github.com/SWI-Prolog/swipl/archive/V8.1.1.tar.gz
   # https://www.swi-prolog.org/download/stable/src/swipl-8.2.1.tar.gz
-    url: https://www.swi-prolog.org/download/stable/src/{{ name }}-{{ version }}.tar.gz 
+    url: https://www.swi-prolog.org/download/stable/src/{{ name }}-{{ version }}.tar.gz
+    sha256: 331bc5093d72af0c9f18fc9ed83b88ef9ddec0c8d379e6c49fa43739c8bda2fb 
   #git_url: https://github.com/SWI-Prolog/swipl-devel.git
   #git_rev: V{{ version }}
 
