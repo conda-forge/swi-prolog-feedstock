@@ -34,7 +34,8 @@ requirements:
     - pkgconfig
     - libuuid
     - libarchive
-    - yaml 
+    - yaml
+    - gmp
   host:
     - curl
     - openjdk
