@@ -2,8 +2,15 @@
 
 #to fix problems with zlib
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:${PREFIX}/include
+ls ${PREFIX}/include
+echo "---------------------"
+ls ${BUILD_PREFIX}/include
+echo "-------"
+ls ${BUILD_PREFIX}/lib
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:${PREFIX}/include
 export LIBRARY_PATH=$LIBRARY_PATH:${PREFIX}/lib
+ls $LIBRARY_PATH
+echo "-------------------------"
 export LD_LIBRARY_PATH="${PREFIX}/lib"
 
 export LDFLAGS="-L${PREFIX}/lib"
