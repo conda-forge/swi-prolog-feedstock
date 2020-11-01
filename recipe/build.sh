@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cp $BUILD_PREFIX/lib/libgmp.so $BUILD_PREFIX/$BUILD/sysroot/usr/lib/
+cp $PREFIX/lib/libgmp.so $BUILD_PREFIX/$HOST/sysroot/usr/lib/
+
 #to fix problems with zlib
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:${PREFIX}/include
 ls ${PREFIX}/include
@@ -21,7 +24,9 @@ export CPPFLAGS="-I${PREFIX}/include"
 #./configure --prefix=$PREFIX
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX="${PREFIX}" -SCMAKE_BUILD_TYPE=Release ..
+#cmake -DCMAKE_INSTALL_PREFIX="${PREFIX}" -DCMAKE_BUILD_TYPE=Release -DSWIPL_PACKAGES_ODBC=OFF -DSWIPL_PACKAGES_JAVA=OFF  ..
+#cmake -DCMAKE_INSTALL_PREFIX="${PREFIX}" -DCMAKE_BUILD_TYPE=Release ..
+cmake -DCMAKE_INSTALL_PREFIX="${PREFIX}" -DCMAKE_BUILD_TYPE=Release -DUSEGMP=OFF -DSWIPL_PACKAGES_ODBC=OFF -DSWIPL_PACKAGES_JAVA=OFF -DSWIPL_PACKAGES_X=OFF -DINSTALL_DOCUMENTATION=OFF ..
 #cmake --prefix=$PREFIX $BUILD_PREFIX
 make VERBOSE=1 -j${CPU_COUNT}
 make install -j${CPU_COUNT}
