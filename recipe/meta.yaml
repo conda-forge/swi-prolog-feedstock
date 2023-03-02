@@ -1,15 +1,13 @@
 {% set name = "swi-prolog" %}
-{% set version = "7.7.0" %}
+{% set version = "9.0.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  #url: https://github.com/SWI-Prolog/swipl-devel/archive/V7.7.0.tar.gz
-  # Makes use of git_url as it needs submodules from git, not available in archive
-  git_url: https://github.com/SWI-Prolog/swipl-devel.git
-  git_rev: V{{ version }}
+  url: https://www.swi-prolog.org/download/stable/src/swipl-{{ version }}.tar.gz
+  sha256: feb2815a51d34fa81cb34e8149830405935a7e1d1c1950461239750baa8b49f0
 
 build:
   number: 0
@@ -18,13 +16,35 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}      
+    - {{ compiler('cxx') }}
     - autoconf
+    - ninja
+    - cmake
   host:
     - curl
-    - openjdk
+    - freetype
     - gmp
+    - libarchive
+    - libedit
+    - libjpeg-turbo
+    - libunwind
+    - libuuid
     - ncurses
+    - openjdk
+    - openssl
+    - readline
+    - unixodbc
+    - xorg-libice
+    - xorg-libx11
+    - xorg-libxaw
+    - xorg-libxext
+    - xorg-libxft
+    - xorg-libxinerama
+    - xorg-libxmu
+    - xorg-libxpm
+    - xorg-libxrender
+    - xorg-libxt
+    - yaml
     - zlib
   run:
     - gmp
@@ -33,13 +53,18 @@ requirements:
 
 test:
   commands:
-    - swipl -h
+    - swipl -g "writeln('hello world')." -t 'halt.'
 
 about:
-  home: https://github.com/SWI-Prolog/swipl-devel
-  license: Simplified BSD
+  home: https://www.swi-prolog.org
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
   summary: A comprehensive Prolog implementation
+  dev_url: https://github.com/SWI-Prolog/swipl-devel
+  doc_url: https://www.swi-prolog.org/pldoc/doc_for?object=root
 
 extra:
   recipe-maintainers:
     - osallou
+    - bollwyvl
