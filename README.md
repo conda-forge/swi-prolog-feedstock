@@ -50,8 +50,8 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-swi--prolog-green.svg)](https://anaconda.org/conda-forge/swi-prolog) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/swi-prolog.svg)](https://anaconda.org/conda-forge/swi-prolog) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/swi-prolog.svg)](https://anaconda.org/conda-forge/swi-prolog) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/swi-prolog.svg)](https://anaconda.org/conda-forge/swi-prolog) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-swi--prolog_openssl_1-green.svg)](https://anaconda.org/conda-forge/swi-prolog_openssl_1) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/swi-prolog_openssl_1.svg)](https://anaconda.org/conda-forge/swi-prolog_openssl_1) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/swi-prolog_openssl_1.svg)](https://anaconda.org/conda-forge/swi-prolog_openssl_1) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/swi-prolog_openssl_1.svg)](https://anaconda.org/conda-forge/swi-prolog_openssl_1) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-swi--prolog_openssl_3-green.svg)](https://anaconda.org/conda-forge/swi-prolog_openssl_3) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/swi-prolog_openssl_3.svg)](https://anaconda.org/conda-forge/swi-prolog_openssl_3) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/swi-prolog_openssl_3.svg)](https://anaconda.org/conda-forge/swi-prolog_openssl_3) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/swi-prolog_openssl_3.svg)](https://anaconda.org/conda-forge/swi-prolog_openssl_3) |
 
 Installing swi-prolog
 =====================
@@ -63,41 +63,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `swi-prolog, swi-prolog_openssl_1` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `swi-prolog_openssl_1, swi-prolog_openssl_3` can be installed with `conda`:
 
 ```
-conda install swi-prolog swi-prolog_openssl_1
-```
-
-or with `mamba`:
-
-```
-mamba install swi-prolog swi-prolog_openssl_1
-```
-
-It is possible to list all of the versions of `swi-prolog` available on your platform with `conda`:
-
-```
-conda search swi-prolog --channel conda-forge
+conda install swi-prolog_openssl_1 swi-prolog_openssl_3
 ```
 
 or with `mamba`:
 
 ```
-mamba search swi-prolog --channel conda-forge
+mamba install swi-prolog_openssl_1 swi-prolog_openssl_3
+```
+
+It is possible to list all of the versions of `swi-prolog_openssl_1` available on your platform with `conda`:
+
+```
+conda search swi-prolog_openssl_1 --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search swi-prolog_openssl_1 --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search swi-prolog --channel conda-forge
+mamba repoquery search swi-prolog_openssl_1 --channel conda-forge
 
-# List packages depending on `swi-prolog`:
-mamba repoquery whoneeds swi-prolog --channel conda-forge
+# List packages depending on `swi-prolog_openssl_1`:
+mamba repoquery whoneeds swi-prolog_openssl_1 --channel conda-forge
 
-# List dependencies of `swi-prolog`:
-mamba repoquery depends swi-prolog --channel conda-forge
+# List dependencies of `swi-prolog_openssl_1`:
+mamba repoquery depends swi-prolog_openssl_1 --channel conda-forge
 ```
 
 
