@@ -31,7 +31,6 @@ requirements:
     - libuuid
     - ncurses
     - openjdk
-    - openssl
     - readline
     - unixodbc
     - xorg-libice
@@ -54,6 +53,17 @@ requirements:
 test:
   commands:
     - swipl -g "writeln('hello world')." -t 'halt.'
+
+output:
+  - name: {{ name|lower }}_openssl_3
+    requirements:
+      host:
+        - openssl
+
+  - name: {{ name|lower }}_openssl_1
+    requirements:
+      host:
+        - openssl 1.1.1t
 
 about:
   home: https://www.swi-prolog.org
