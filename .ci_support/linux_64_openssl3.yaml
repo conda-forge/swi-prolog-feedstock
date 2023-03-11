@@ -23,7 +23,7 @@ gmp:
 libarchive:
 - '3.6'
 libjpeg_turbo:
-- '2'
+- 2.1.5
 libunwind:
 - '1.6'
 libuuid:
