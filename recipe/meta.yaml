@@ -10,7 +10,7 @@ source:
   sha256: feb2815a51d34fa81cb34e8149830405935a7e1d1c1950461239750baa8b49f0
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win or osx]
 
 requirements:
