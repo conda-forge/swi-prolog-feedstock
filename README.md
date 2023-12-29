@@ -55,14 +55,14 @@ Current release info
 Installing swi-prolog
 =====================
 
-Installing `swi-prolog` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `swi-prolog` from the `conda-forge/label/swi_prolog_experimental` channel can be achieved by adding `conda-forge/label/swi_prolog_experimental` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/swi_prolog_experimental
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `swi-prolog` can be installed with `conda`:
+Once the `conda-forge/label/swi_prolog_experimental` channel has been enabled, `swi-prolog` can be installed with `conda`:
 
 ```
 conda install swi-prolog
@@ -77,26 +77,26 @@ mamba install swi-prolog
 It is possible to list all of the versions of `swi-prolog` available on your platform with `conda`:
 
 ```
-conda search swi-prolog --channel conda-forge
+conda search swi-prolog --channel conda-forge/label/swi_prolog_experimental
 ```
 
 or with `mamba`:
 
 ```
-mamba search swi-prolog --channel conda-forge
+mamba search swi-prolog --channel conda-forge/label/swi_prolog_experimental
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search swi-prolog --channel conda-forge
+mamba repoquery search swi-prolog --channel conda-forge/label/swi_prolog_experimental
 
 # List packages depending on `swi-prolog`:
-mamba repoquery whoneeds swi-prolog --channel conda-forge
+mamba repoquery whoneeds swi-prolog --channel conda-forge/label/swi_prolog_experimental
 
 # List dependencies of `swi-prolog`:
-mamba repoquery depends swi-prolog --channel conda-forge
+mamba repoquery depends swi-prolog --channel conda-forge/label/swi_prolog_experimental
 ```
 
 
@@ -118,7 +118,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance

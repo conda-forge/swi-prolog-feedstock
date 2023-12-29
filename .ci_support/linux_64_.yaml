@@ -7,7 +7,7 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge swi_prolog_experimental
 curl:
 - '8'
 cxx_compiler:
