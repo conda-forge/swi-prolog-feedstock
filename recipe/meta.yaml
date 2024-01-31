@@ -1,5 +1,5 @@
 {% set name = "swi-prolog" %}
-{% set version = "9.0.4" %}
+{% set version = "9.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://www.swi-prolog.org/download/stable/src/swipl-{{ version }}.tar.gz
-  sha256: feb2815a51d34fa81cb34e8149830405935a7e1d1c1950461239750baa8b49f0
+  sha256: 10d90b15734d14d0d7972dc11a3584defd300d65a9f0b1185821af8c3896da5e
 
 build:
-  number: 6
+  number: 0
   skip: true  # [win or osx]
 
 requirements:
