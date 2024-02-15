@@ -1,8 +1,7 @@
-{% set name = "swi-prolog" %}
 {% set version = "9.2.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: swi-prolog
   version: {{ version }}
 
 source:
