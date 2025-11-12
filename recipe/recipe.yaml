@@ -13,7 +13,7 @@ source:
   sha256: 53f428e2d9bbdf30e53b06c9c42def9a13ff82fc36a111d410fc8b0bc889ee2d
 
 build:
-  number: 1
+  number: 2
   skip: not linux
 
 requirements:
@@ -36,6 +36,7 @@ requirements:
     - ncurses
     - openjdk
     - openssl
+    - python
     - readline
     - unixodbc
     - xorg-libice
@@ -53,6 +54,7 @@ requirements:
   run:
     - gmp
     - ncurses
+    - python
     - zlib
 
 tests:
