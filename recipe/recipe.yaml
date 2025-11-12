@@ -15,6 +15,10 @@ source:
 build:
   number: 2
   skip: not linux
+  script:
+    env:
+      CONDA_PY: ${{ python }}
+    file: build-swi-prolog
 
 requirements:
   build:
