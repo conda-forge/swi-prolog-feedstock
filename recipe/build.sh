@@ -1,9 +1,9 @@
-#!/bin/bash
-set -ex
+#!/usr/bin/env bash
+set -eux
 
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -G Ninja ..
+cmake "-DCMAKE_INSTALL_PREFIX=${PREFIX}" -G Ninja ..
 ninja
-ctest -j $CPU_COUNT
+ctest -j "${CPU_COUNT}"
 ninja install

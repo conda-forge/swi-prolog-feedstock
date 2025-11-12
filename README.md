@@ -3,7 +3,7 @@ About swi-prolog-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/swi-prolog-feedstock/blob/main/LICENSE.txt)
 
-Home: https://www.swi-prolog.org
+Home: https://www.swi-prolog.org/
 
 Package license: BSD-2-Clause
 
