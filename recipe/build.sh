@@ -2,8 +2,20 @@
 set -eux
 
 mkdir build
+
 cd build
-cmake "-DCMAKE_INSTALL_PREFIX=${PREFIX}" -G Ninja ..
+
+cmake ${CMAKE_ARGS} ${SRC_DIR} \
+    -GNinja \
+    -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE \
+    -DCMAKE_INSTALL_PREFIX=${PREFIX} \
+    -DPYTHON_PREFIX=${SP_DIR} \
+    -DPython_EXECUTABLE=${PYTHON} \
+    -DPython_INCLUDE_DIR:PATH=${PYTHON_INCLUDE_DIR} \
+    -DPython_LIBRARY:PATH=${PYTHON_LIBRARY}
+
 ninja
+
 ctest -j "${CPU_COUNT}"
+
 ninja install
