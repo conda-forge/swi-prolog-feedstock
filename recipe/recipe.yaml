@@ -37,6 +37,7 @@ requirements:
     - libjpeg-turbo
     - libunwind
     - libuuid
+    - libxcrypt
     - ncurses
     - openjdk
     - openssl
@@ -57,6 +58,7 @@ requirements:
     - zlib
   run:
     - gmp
+    - libxcrypt
     - ncurses
     - python
     - zlib
