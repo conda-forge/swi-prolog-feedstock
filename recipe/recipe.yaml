@@ -1,0 +1,74 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: 9.2.9
+
+package:
+  name: swi-prolog
+  version: ${{ version }}
+
+source:
+  url: https://www.swi-prolog.org/download/stable/src/swipl-${{ version }}.tar.gz
+  sha256: 53f428e2d9bbdf30e53b06c9c42def9a13ff82fc36a111d410fc8b0bc889ee2d
+
+build:
+  number: 0
+  skip: not linux
+
+requirements:
+  build:
+    - ${{ compiler("c") }}
+    - ${{ compiler("cxx") }}
+    - ${{ stdlib("c") }}
+    - autoconf
+    - cmake
+    - ninja
+  host:
+    - curl
+    - freetype
+    - gmp
+    - libarchive
+    - libedit
+    - libjpeg-turbo
+    - libunwind
+    - libuuid
+    - ncurses
+    - openjdk
+    - openssl
+    - readline
+    - unixodbc
+    - xorg-libice
+    - xorg-libx11
+    - xorg-libxaw
+    - xorg-libxext
+    - xorg-libxft
+    - xorg-libxinerama
+    - xorg-libxmu
+    - xorg-libxpm
+    - xorg-libxrender
+    - xorg-libxt
+    - yaml
+    - zlib
+  run:
+    - gmp
+    - ncurses
+    - zlib
+
+tests:
+  - script:
+      - swipl -g "writeln('hello world')." -t 'halt.'
+
+about:
+  license: BSD-2-Clause
+  license_file: LICENSE
+  summary: A comprehensive Prolog implementation
+  homepage: https://www.swi-prolog.org
+  repository: https://github.com/SWI-Prolog/swipl-devel
+  documentation: https://www.swi-prolog.org/pldoc/doc_for?object=root
+
+extra:
+  recipe-maintainers:
+    - Guthur
+    - osallou
+    - bollwyvl
