@@ -3,6 +3,7 @@ schema_version: 1
 
 context:
   version: 9.2.9
+  cmake_min: "3.5"
 
 package:
   name: swi-prolog
@@ -26,8 +27,9 @@ requirements:
     - ${{ compiler("cxx") }}
     - ${{ stdlib("c") }}
     - autoconf
-    - cmake
+    - cmake ${{ cmake_min }}.*
     - ninja
+    - pkg-config
   host:
     - curl
     - freetype
