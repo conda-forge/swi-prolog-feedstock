@@ -3,7 +3,6 @@ schema_version: 1
 
 context:
   version: "9.2.9"
-  python_check_max: "3.14"
   openjdk_min: "8"
 
 package:
@@ -16,11 +15,9 @@ source:
 
 build:
   number: 2
-  skip: (not linux) or not (is_abi3 and is_python_min)
+  skip: linux
   script:
     file: build-swi-prolog
-  python:
-    version_independent: true
 
 requirements:
   build:
@@ -62,24 +59,15 @@ requirements:
     # python stuff
     - pip
     - python
-    - python-abi3
-    - if: build_platform != target_platform
-      then:
-        - python
-        - cross-python_${{ target_platform }}
-        - crossenv
   run:
     - gmp
     - ncurses
-    - zlib
-  run_constraints:
-    - python >=${{ python_min }}
     - openjdk >=${{ openjdk_min }}
-  ignore_run_exports:
-    from_package:
-      - cross-python_${{ target_platform }}
+    - zlib
 
 tests:
+  - script:
+    - swipl -g "writeln('hello world')." -t 'halt.'
   - python:
       imports:
         - janus_swi
@@ -87,25 +75,9 @@ tests:
       pip_check: true
       python_version:
         - ${{ python_min }}.*
-        - ${{ python_check_max }}.*
-  - script:
-    - swipl -g "writeln('hello world')." -t 'halt.'
   - requirements:
       run:
         - pytest-cov
-        - python ${{ python_min }}.*
-    files:
-      source:
-        - packages/mqi/python/test_prologserver.py
-      recipe:
-        - test_janus.py
-    script:
-      - coverage run --source janus_swi --source swiplserver -m pytest -vv --tb=long --color=yes
-      - coverage report --show-missing --skip-covered --fail-under=92
-  - requirements:
-      run:
-        - pytest-cov
-        - python ${{ python_check_max }}.*
     files:
       source:
         - packages/mqi/python/test_prologserver.py

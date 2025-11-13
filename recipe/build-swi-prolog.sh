@@ -22,6 +22,7 @@ pushd build
         -DPython_EXECUTABLE="${PYTHON}" \
         -DPython_INCLUDE_DIR:PATH="${PYTHON_INCLUDE_DIR}" \
         -DPython_LIBRARY:PATH="${PYTHON_LIBRARY}" \
+        -DCPYTHON_VERSION="${CONDA_PY};EXACT" \
         "${SRC_DIR}"
 
     ninja
