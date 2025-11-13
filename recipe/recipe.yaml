@@ -71,7 +71,7 @@ requirements:
         - xorg-xorgproto
     - if: win
       then:
-        - winpthreads
+        - winpthreads-devel
 
   run:
     - gmp
