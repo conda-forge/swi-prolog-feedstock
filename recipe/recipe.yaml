@@ -39,7 +39,8 @@ requirements:
     # python
     - pip
     - python
-    - setuptools
+    - setuptools >=42
+    - setuptools-scm
     # os/arch
     - if: linux
       then:
@@ -75,14 +76,19 @@ requirements:
     - gmp
     - ncurses
     - openjdk >=${{ openjdk_min }}
+    - python
     - zlib
     - if: win
       then:
         - pthreads-win32
+    - if: linux
+      then:
+        - gperftools
 
 tests:
   - script:
       - swipl -g "writeln('hello world')." -t 'halt.'
+      - swipl -g test_installation,halt -t halt
   - python:
       imports:
         - janus_swi
