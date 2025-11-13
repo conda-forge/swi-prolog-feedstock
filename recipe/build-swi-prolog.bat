@@ -8,7 +8,6 @@ pushd build
     cmake %CMAKE_ARGS% ^
         -G "NMake Makefiles" ^
         -DCMAKE_BUILD_TYPE=Release ^
-        -DCMAKE_CXX_STANDARD=20 ^
         -DINSTALL_TESTS=ON ^
         "-DCMAKE_INSTALL_PREFIX=%PREFIX%" ^
         "-DCMAKE_PREFIX_PATH=%PREFIX%" ^

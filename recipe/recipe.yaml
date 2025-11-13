@@ -29,6 +29,7 @@ requirements:
         - ninja
         - pkg-config
   host:
+    - gmp
     - libarchive
     - libdb
     - libjpeg-turbo
@@ -45,7 +46,6 @@ requirements:
     # os/arch
     - if: unix
       then:
-        - gmp
         - libedit
         - ncurses
         - ossuuid
