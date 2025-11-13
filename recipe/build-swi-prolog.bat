@@ -4,6 +4,7 @@ set BUILD_TYPE=Release
 
 md build
 
+
 pushd build
     cmake %CMAKE_ARGS% ^
         -G "NMake Makefiles" ^
@@ -11,6 +12,8 @@ pushd build
         -DINSTALL_TESTS=ON ^
         "-DCMAKE_INSTALL_PREFIX=%PREFIX%" ^
         "-DCMAKE_PREFIX_PATH=%PREFIX%" ^
+        "-DGMP_INCLUDE_DIRS=%PREFIX%\Library\include" ^
+        "-DGMP_LIB_DIRS=%PREFIX%\Library\lib" ^
         "%SRC_DIR%" ^
         || exit 2
 
