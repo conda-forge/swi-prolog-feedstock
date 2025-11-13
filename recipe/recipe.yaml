@@ -86,7 +86,7 @@ tests:
       - coverage report --show-missing --skip-covered --fail-under=92
 
 about:
-  license: BSD-2-Clause
+  license: BSD-2-Clause AND MIT
   license_file:
     - LICENSE
     - packages/jpl/LICENSE
