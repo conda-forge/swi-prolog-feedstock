@@ -86,7 +86,7 @@ tests:
       - coverage report --show-missing --skip-covered --fail-under=92
 
 about:
-  license: BSD-2-Clause AND MIT
+  license: BSD-2-Clause AND MIT AND Unicode-DFS-2015
   license_file:
     - LICENSE
     - packages/jpl/LICENSE

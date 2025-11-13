@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/swi-prolog-feed
 
 Home: https://www.swi-prolog.org/
 
-Package license: BSD-2-Clause
+Package license: BSD-2-Clause AND MIT AND Unicode-DFS-2015
 
 Summary: A comprehensive Prolog implementation
 
