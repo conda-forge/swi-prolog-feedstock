@@ -15,7 +15,7 @@ source:
 
 build:
   number: 2
-  skip: linux
+  skip: not linux
   script:
     file: build-swi-prolog
 
