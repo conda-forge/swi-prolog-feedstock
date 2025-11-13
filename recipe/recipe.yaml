@@ -73,8 +73,6 @@ tests:
         - janus_swi
         - swiplserver
       pip_check: true
-      python_version:
-        - ${{ python_min }}.*
   - requirements:
       run:
         - pytest-cov
