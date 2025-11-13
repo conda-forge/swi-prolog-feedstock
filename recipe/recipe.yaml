@@ -15,7 +15,6 @@ source:
 
 build:
   number: 2
-  skip: not linux
   script:
     file: build-swi-prolog
 
@@ -24,50 +23,66 @@ requirements:
     - ${{ compiler("c") }}
     - ${{ compiler("cxx") }}
     - ${{ stdlib("c") }}
-    - autoconf
     - cmake
-    - ninja
-    - pkg-config
+    - if: unix
+      then:
+        - ninja
+        - pkg-config
   host:
-    - curl
-    - freetype
-    - gmp
     - libarchive
-    - libedit
     - libjpeg-turbo
-    - libunwind
-    - libuuid
-    - libxcrypt
-    - ncurses
     - openjdk ${{ openjdk_min }}.*
     - openssl
-    - readline
-    - setuptools
-    - unixodbc
-    - xorg-libice
-    - xorg-libx11
-    - xorg-libxaw
-    - xorg-libxext
-    - xorg-libxft
-    - xorg-libxinerama
-    - xorg-libxmu
-    - xorg-libxpm
-    - xorg-libxrender
-    - xorg-libxt
+    - pcre2
     - yaml
     - zlib
-    # python stuff
+    # python
     - pip
     - python
+    - setuptools
+    # os/arch
+    - if: linux
+      then:
+        - gmp
+        - gperftools
+        - libxcrypt
+        - ossuuid
+        - xorg-libxft
+    - if: unix
+      then:
+        - fontconfig
+        - libedit
+        - ncurses
+        - readline
+        - unixodbc
+        - xorg-libice
+        - xorg-libsm
+        - xorg-libx11
+        - xorg-libxaw
+        - xorg-libxext
+        - xorg-libxinerama
+        - xorg-libxmu
+        - xorg-libxpm
+        - xorg-libxrender
+        - xorg-libxt
+    - if: win
+      then:
+        - pthreads-win32
+    - if: not osx
+      then:
+        - libdb
   run:
     - gmp
     - ncurses
     - openjdk >=${{ openjdk_min }}
     - zlib
+    - if: win
+      then:
+        - pthreads-win32
 
 tests:
   - script:
-    - swipl -g "writeln('hello world')." -t 'halt.'
+      - swipl -g "writeln('hello world')." -t 'halt.'
   - python:
       imports:
         - janus_swi
