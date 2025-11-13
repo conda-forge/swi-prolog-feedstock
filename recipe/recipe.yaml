@@ -68,9 +68,6 @@ requirements:
         - xorg-libxrender
         - xorg-libxt
         - xorg-xorgproto
-    - if: win
-      then:
-        - pthreads-win32
 
   run:
     - gmp
