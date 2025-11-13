@@ -22,6 +22,10 @@ freetype:
 - '2'
 gmp:
 - '6'
+is_abi3:
+- true
+is_python_min:
+- true
 libarchive:
 - '3.8'
 libjpeg_turbo:
@@ -39,7 +43,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.13.* *_cp313
+- 3.10.* *_cpython
+python_min:
+- '3.10'
 readline:
 - '8'
 target_platform:
@@ -47,5 +53,7 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - python
+  - is_python_min
 zlib:
 - '1'
