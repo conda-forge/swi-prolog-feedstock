@@ -2,6 +2,11 @@
 
 set BUILD_TYPE=Release
 
+set "GMP_INCLUDE_DIRS=%PREFIX%\Library\include"
+set "GMP_LIB_DIRS=%PREFIX%\Library\lib"
+
+set "PIP_OPTS=-vv --no-deps --no-build-isolation"
+
 md build
 
 
@@ -12,8 +17,6 @@ pushd build
         -DINSTALL_TESTS=ON ^
         "-DCMAKE_INSTALL_PREFIX=%PREFIX%" ^
         "-DCMAKE_PREFIX_PATH=%PREFIX%" ^
-        "-DGMP_INCLUDE_DIRS=%PREFIX%\Library\include" ^
-        "-DGMP_LIB_DIRS=%PREFIX%\Library\lib" ^
         "%SRC_DIR%" ^
         || exit 2
 
@@ -27,8 +30,6 @@ pushd build
         --config "%BUILD_TYPE%" ^
         || exit 4
 popd
-
-set "PIP_OPTS=-vv --no-deps --no-build-isolation"
 
 pushd packages\swipy
     "%PYTHON%" -m pip install . ^

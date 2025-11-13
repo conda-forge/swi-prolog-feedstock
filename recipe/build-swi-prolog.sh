@@ -8,6 +8,7 @@ BUILD_TYPE=PGO
 CONDA_PY=$("${PYTHON}" -c 'import sys; v = sys.version_info; print(f"{v[0]}.{v[1]}")')
 PYTHON_INCLUDE_DIR="${PREFIX}/include/python${CONDA_PY}"
 PYTHON_LIBRARY="${PREFIX}/lib/libpython${CONDA_PY}${SHLIB_EXT}"
+PIP_OPTS="-vv --no-deps --no-build-isolation --ignore-installed --disable-pip-version-check"
 
 if [[ "${_UNAME}" == "Darwin" ]]; then
     BUILD_TYPE=Release
@@ -49,8 +50,6 @@ pushd build
         --config "${BUILD_TYPE}" \
         --target install
 popd
-
-PIP_OPTS="-vv --no-deps --no-build-isolation --ignore-installed --disable-pip-version-check"
 
 pushd packages/swipy
     "${PYTHON}" -m pip install . ${PIP_OPTS:+${PIP_OPTS}}
