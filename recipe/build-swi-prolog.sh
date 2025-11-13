@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -eux
 
+_UNAME=$(uname)
+
+BUILD_TYPE=Release
+CMAKE_OPTS=""
+
 CONDA_PY=$("${PYTHON}" -c 'import sys; v = sys.version_info; print(f"{v[0]}.{v[1]}")')
 PYTHON_INCLUDE_DIR="${PREFIX}/include/python${CONDA_PY}"
 PYTHON_LIBRARY="${PREFIX}/lib/libpython${CONDA_PY}${SHLIB_EXT}"
-
-BUILD_TYPE=Release
-
-CMAKE_OPTS=""
-_UNAME=$(uname)
 
 if [[ "${_UNAME}" == "Linux" ]]; then
     BUILD_TYPE=PGO
@@ -37,8 +37,14 @@ pushd build
         -DSWIPL_PACKAGES_QT=OFF \
         "${SRC_DIR}"
 
-    cmake --build . -j "${CPU_COUNT}" --config "${BUILD_TYPE}"
-    cmake --build . -j "${CPU_COUNT}" --target install
+    cmake --build . \
+        -j "${CPU_COUNT}" \
+        --config "${BUILD_TYPE}"
+
+    cmake --build . \
+        -j "${CPU_COUNT}"  \
+        --config "${BUILD_TYPE}" \
+        --target install
 popd
 
 PIP_OPTS="-vv --no-deps --no-build-isolation --ignore-installed --disable-pip-version-check"

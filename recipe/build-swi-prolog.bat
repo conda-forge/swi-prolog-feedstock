@@ -1,35 +1,42 @@
-md build
-cd build
+@echo on
 
 set BUILD_TYPE=Release
 
-cmake %CMAKE_ARGS% ^
-      -G "NMake Makefiles" ^
-      -DUSE_GMP=OFF ^
-      -DCMAKE_BUILD_TYPE=Release ^
-      "-DCMAKE_PREFIX_PATH=%PREFIX%" ^
-      "-DCMAKE_INSTALL_PREFIX=%PREFIX%" ^
-      -DINSTALL_TESTS=ON ^
-      "%SRC_DIR%" ^
-      || exit 2
+md build
 
-cmake --build . ^
-    -j ^"%CPU_COUNT%" ^
-    --verbose ^
-    --config Release ^
-    || exit 3
+pushd build
+    cmake %CMAKE_ARGS% ^
+        -G "NMake Makefiles" ^
+        -DUSE_GMP=OFF ^
+        -DCMAKE_BUILD_TYPE=Release ^
+        "-DCMAKE_PREFIX_PATH=%PREFIX%" ^
+        "-DCMAKE_INSTALL_PREFIX=%PREFIX%" ^
+        -DINSTALL_TESTS=ON ^
+        "%SRC_DIR%" ^
+        || exit 2
 
-cmake --build . ^
-    --target install ^
-    --config "%BUILD_TYPE%" ^
-    || exit 4
+    cmake --build . ^
+        -j "%CPU_COUNT%" ^
+        --config "%BUILD_TYPE%" ^
+        || exit 3
+
+    cmake --build . ^
+        --target install ^
+        --config "%BUILD_TYPE%" ^
+        || exit 4
+popd
 
 set "PIP_OPTS=-vv --no-deps --no-build-isolation"
 
-cd "%SRC_DIR%\packages\swipy"
-"%PYTHON%" -m pip install . %PIP_OPTS% ^
-    || exit 5
+pushd packages\swipy
+    "%PYTHON%" -m pip install . ^
+        %PIP_OPTS% ^
+        || exit 5
+popd
 
-cd "%SRC_DIR%\packages\mqi\python"
-"%PYTHON%" -m pip install . %PIP_OPTS% ^
-    || exit 5
+
+pushd packages\mqi\python
+    "%PYTHON%" -m pip install . ^
+        %PIP_OPTS% ^
+        || exit 6
+popd
