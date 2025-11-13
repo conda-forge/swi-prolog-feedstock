@@ -48,7 +48,6 @@ requirements:
         - gperftools
         - libxcrypt
         - ossuuid
-        - xorg-libxft
     - if: unix
       then:
         - fontconfig
@@ -61,6 +60,7 @@ requirements:
         - xorg-libx11
         - xorg-libxaw
         - xorg-libxext
+        - xorg-libxft
         - xorg-libxinerama
         - xorg-libxmu
         - xorg-libxpm
