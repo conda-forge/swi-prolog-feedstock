@@ -66,6 +66,7 @@ requirements:
         - xorg-libxpm
         - xorg-libxrender
         - xorg-libxt
+        - xorg-xorgproto
     - if: win
       then:
         - pthreads-win32
