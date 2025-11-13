@@ -3,7 +3,7 @@ schema_version: 1
 
 context:
   version: "9.2.9"
-  openjdk_min: "8"
+  openjdk_min: "17"
 
 package:
   name: swi-prolog
@@ -30,6 +30,7 @@ requirements:
         - pkg-config
   host:
     - libarchive
+    - libdb
     - libjpeg-turbo
     - openjdk ${{ openjdk_min }}.*
     - openssl
@@ -42,19 +43,18 @@ requirements:
     - setuptools >=42
     - setuptools-scm
     # os/arch
-    - if: linux
-      then:
-        - gmp
-        - gperftools
-        - libxcrypt
-        - ossuuid
     - if: unix
       then:
         - fontconfig
+        - gperftools
         - libedit
         - ncurses
+        - ossuuid
         - readline
         - unixodbc
+    - if: linux
+      then:
+        - libxcrypt
         - xorg-libice
         - xorg-libsm
         - xorg-libx11
@@ -70,9 +70,7 @@ requirements:
     - if: win
       then:
         - pthreads-win32
-    - if: not osx
-      then:
-        - libdb
+
   run:
     - gmp
     - ncurses
@@ -82,8 +80,7 @@ requirements:
     - if: win
       then:
         - pthreads-win32
-    - if: linux
-      then:
+    - else:
         - gperftools
 
 tests:
