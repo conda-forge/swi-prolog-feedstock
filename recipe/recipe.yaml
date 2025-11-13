@@ -78,9 +78,6 @@ requirements:
     - if: linux
       then:
         - gperftools
-    - if: win
-      then:
-        - pthreads-win32
 
 tests:
   - script:
