@@ -45,8 +45,7 @@ requirements:
     # os/arch
     - if: unix
       then:
-        - fontconfig
-        - gperftools
+        - gmp
         - libedit
         - ncurses
         - ossuuid
@@ -54,6 +53,8 @@ requirements:
         - unixodbc
     - if: linux
       then:
+        - fontconfig
+        - gperftools
         - libxcrypt
         - xorg-libice
         - xorg-libsm
@@ -77,11 +78,12 @@ requirements:
     - openjdk >=${{ openjdk_min }}
     - python
     - zlib
+    - if: linux
+      then:
+        - gperftools
     - if: win
       then:
         - pthreads-win32
-    - else:
-        - gperftools
 
 tests:
   - script:
