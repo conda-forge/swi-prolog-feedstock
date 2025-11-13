@@ -115,6 +115,7 @@ about:
     - packages/mqi/python/swiplserver/LICENSE
     - packages/sweep/LICENSE
     - packages/utf8proc/LICENSE
+    - src/Tests/COPYING
 
   summary: A comprehensive Prolog implementation
   homepage: https://www.swi-prolog.org
