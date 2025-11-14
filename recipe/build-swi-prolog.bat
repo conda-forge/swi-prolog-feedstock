@@ -22,7 +22,6 @@ pushd build
         || exit 2
 
     cmake --build . ^
-        -j "%CPU_COUNT%" ^
         --config "%BUILD_TYPE%" ^
         || exit 3
 
