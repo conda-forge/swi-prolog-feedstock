@@ -13,6 +13,7 @@ pushd build
     cmake %CMAKE_ARGS% ^
         -G "NMake Makefiles" ^
         -DCMAKE_BUILD_TYPE=Release ^
+        -DCMAKE_CXX_STANDARD=17 ^
         -DINSTALL_TESTS=ON ^
         -DUSE_GMP=OFF ^
         "-DCMAKE_INSTALL_PREFIX=%PREFIX%" ^

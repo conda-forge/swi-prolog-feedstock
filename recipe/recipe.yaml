@@ -14,6 +14,8 @@ source:
   sha256: 53f428e2d9bbdf30e53b06c9c42def9a13ff82fc36a111d410fc8b0bc889ee2d
 
 build:
+  # TODO: remove once building at least once on all platforms
+  skip: not is_python_min
   number: 2
   script:
     file: build-swi-prolog
