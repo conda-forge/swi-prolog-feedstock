@@ -73,11 +73,12 @@ requirements:
         - xorg-xorgproto
 
   run:
-    - gmp
-    - ncurses
     - openjdk >=${{ openjdk_min }}
     - python
-    - zlib
+    - if: unix
+      then:
+        - gmp
+        - ncurses
     - if: linux
       then:
         - gperftools
