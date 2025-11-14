@@ -44,8 +44,7 @@ requirements:
     - setuptools >=42
     - setuptools-scm
     # os/arch
-    - if: win
-        - pthreads-win32
+    - if: unix
       then:
         - gmp
         - libedit
@@ -53,6 +52,8 @@ requirements:
         - ossuuid
         - readline
         - unixodbc
+      else:
+        - pthreads-win32
     - if: linux
       then:
         - fontconfig
