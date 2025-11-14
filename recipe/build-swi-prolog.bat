@@ -9,12 +9,12 @@ set "PIP_OPTS=-vv --no-deps --no-build-isolation"
 
 md build
 
-
 pushd build
     cmake %CMAKE_ARGS% ^
         -G "NMake Makefiles" ^
         -DCMAKE_BUILD_TYPE=Release ^
         -DINSTALL_TESTS=ON ^
+        -DUSE_GMP=OFF ^
         "-DCMAKE_INSTALL_PREFIX=%PREFIX%" ^
         "-DCMAKE_PREFIX_PATH=%PREFIX%" ^
         "%SRC_DIR%" ^

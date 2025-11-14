@@ -30,7 +30,6 @@ requirements:
         - pkg-config
 
   host:
-    - gmp
     - libarchive
     - libdb
     - libjpeg-turbo
@@ -45,8 +44,10 @@ requirements:
     - setuptools >=42
     - setuptools-scm
     # os/arch
-    - if: unix
+    - if: win
+        - pthreads-win32
       then:
+        - gmp
         - libedit
         - ncurses
         - ossuuid
@@ -69,9 +70,6 @@ requirements:
         - xorg-libxrender
         - xorg-libxt
         - xorg-xorgproto
-    - if: win
-      then:
-        - winpthreads-devel
 
   run:
     - gmp
