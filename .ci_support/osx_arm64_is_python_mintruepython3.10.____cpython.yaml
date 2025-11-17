@@ -1,31 +1,35 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 c_compiler:
-- vs2022
+- clang
+c_compiler_version:
+- '19'
 c_stdlib:
-- vs
+- macosx_deployment_target
+c_stdlib_version:
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2022
+- clangxx
+cxx_compiler_version:
+- '19'
+gmp:
+- '6'
 is_python_min:
 - true
 libarchive:
 - '3.8'
 libjpeg_turbo:
 - '3'
-m2w64_c_compiler:
-- gcc
-m2w64_c_compiler_version:
-- '14'
-m2w64_c_stdlib:
-- m2w64-sysroot
-m2w64_c_stdlib_version:
-- '12'
-m2w64_cxx_compiler:
-- gxx
-m2w64_cxx_compiler_version:
-- '14'
+macos_machine:
+- arm64-apple-darwin20.0.0
+ncurses:
+- '6'
 openssl:
 - '3.5'
 pcre2:
@@ -36,9 +40,13 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.10.* *_cpython
+readline:
+- '8'
 target_platform:
-- win-64
+- osx-arm64
 zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 - - python
   - is_python_min
 zlib:

@@ -11,6 +11,9 @@ jobs:
       osx_64_is_python_mintruepython3.10.____cpython:
         CONFIG: osx_64_is_python_mintruepython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
+      osx_arm64_is_python_mintruepython3.10.____cpython:
+        CONFIG: osx_arm64_is_python_mintruepython3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables: {}
 
