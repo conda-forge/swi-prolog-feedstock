@@ -4,6 +4,7 @@ set -eux
 [ -n "$PATH_OVERRIDE" ] && export PATH="$PATH_OVERRIDE"
 
 BUILD_TYPE=Release
+PIP_OPTS="-vv --no-deps --no-build-isolation --ignore-installed --disable-pip-version-check"
 
 mkdir build
 
@@ -15,7 +16,6 @@ pushd build
         -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
         -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE \
         -DCMAKE_PREFIX_PATH="${PREFIX}" \
-        -DINSTALL_TESTS=ON \
         -DSWIPL_PACKAGES_QT=OFF \
         -DSWIPL_PACKAGES_X=OFF \
         "${SRC_DIR}"
