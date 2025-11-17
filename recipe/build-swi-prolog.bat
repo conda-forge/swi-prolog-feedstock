@@ -1,6 +1,8 @@
 @echo on
 
-copy "%RECIPE_DIR%/build-swi-prolog-win.sh" . ^
+set BUILD_SH=build-swi-prolog-win.sh
+
+copy "%RECIPE_DIR%\%BUILD_SH%" "%SRC_DIR%\%BUILD_SH%" ^
     || exit 2
 
 set "PREFIX=%PREFIX:\=/%"
@@ -9,5 +11,5 @@ set "MSYSTEM=MINGW%ARCH%"
 set MSYS2_PATH_TYPE=inherit
 set CHERE_INVOKING=1
 
-bash -lc "./build-swi-prolog-win.sh" ^
+bash -lc "./%BUILD_SH%" ^
     || exit 10
