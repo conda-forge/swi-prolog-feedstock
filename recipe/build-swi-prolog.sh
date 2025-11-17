@@ -18,6 +18,12 @@ if [[ "${_UNAME}" == "Darwin" ]]; then
     #     151 | { XtCallCallbacks(w, XtNexposeCallback, (caddr_t) region);
     #
     CMAKE_ARGS="${CMAKE_ARGS} -DSWIPL_PACKAGES_X=OFF"
+
+    if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
+        CMAKE_ARGS="${CMAKE_ARGS} -DRUN_RESULT=0 RUN_RESULT__TRYRUN_OUTPUT=0"
+    fi
+else
+    CMAKE_ARGS="${CMAKE_ARGS} -DINSTALL_TESTS=ON"
 fi
 
 mkdir build
@@ -33,7 +39,6 @@ pushd build
         -DCMAKE_OSX_SYSROOT="${CONDA_BUILD_SYSROOT}" \
         -DCMAKE_PREFIX_PATH="${PREFIX}" \
         -DCPYTHON_VERSION="${CONDA_PY};EXACT" \
-        -DINSTALL_TESTS=ON \
         -DMACOSX_DEPENDENCIES_FROM="${PREFIX}" \
         -DPython_EXECUTABLE="${PYTHON}" \
         -DPython_INCLUDE_DIR:PATH="${PYTHON_INCLUDE_DIR}" \
