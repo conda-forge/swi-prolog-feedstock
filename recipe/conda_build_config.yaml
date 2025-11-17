@@ -1,0 +1,4 @@
+c_stdlib_version:
+  - if: osx and not x86_64
+    then:
+      - "14.0"
