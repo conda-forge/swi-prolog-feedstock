@@ -22,16 +22,20 @@ build:
 
 requirements:
   build:
-    - ${{ compiler("c") }}
-    - ${{ compiler("cxx") }}
-    - ${{ stdlib("c") }}
     - cmake
+    - ninja
     - if: unix
       then:
-        - ninja
+        - ${{ compiler("c") }}
+        - ${{ compiler("cxx") }}
+        - ${{ stdlib("c") }}
         - pkg-config
+      else:
+        - ${{ compiler("m2_c") }}
+        - ${{ compiler("m2_cxx") }}
 
   host:
+    - gmp
     - libarchive
     - libdb
     - libjpeg-turbo
@@ -48,14 +52,11 @@ requirements:
     # os/arch
     - if: unix
       then:
-        - gmp
         - libedit
         - ncurses
         - ossuuid
         - readline
         - unixodbc
-      else:
-        - pthreads-win32
     - if: linux
       then:
         - fontconfig
@@ -77,9 +78,9 @@ requirements:
   run:
     - openjdk >=${{ openjdk_min }}
     - python
+    - gmp
     - if: unix
       then:
-        - gmp
         - ncurses
     - if: linux
       then:

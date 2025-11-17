@@ -52,9 +52,11 @@ pushd build
 popd
 
 pushd packages/swipy
-    "${PYTHON}" -m pip install . ${PIP_OPTS:+${PIP_OPTS}}
+    "${PYTHON}" -m pip install . \
+        ${PIP_OPTS:+${PIP_OPTS}}
 popd
 
 pushd packages/mqi/python
-    "${PYTHON}" -m pip install . ${PIP_OPTS:+${PIP_OPTS}}
+    "${PYTHON}" -m pip install . \
+        ${PIP_OPTS:+${PIP_OPTS}}
 popd
