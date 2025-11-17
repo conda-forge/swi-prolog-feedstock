@@ -2,14 +2,12 @@
 set -eux
 
 BUILD_TYPE=Release
-CMAKE_ARGS="${CMAKE_ARGS} -DSWIPL_PACKAGES_X=OFF"
 
 mkdir build
 
 pushd build
     cmake \
         -GNinja \
-        ${CMAKE_ARGS:+ ${CMAKE_ARGS}} \
         -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
@@ -17,6 +15,7 @@ pushd build
         -DCMAKE_PREFIX_PATH="${PREFIX}" \
         -DINSTALL_TESTS=ON \
         -DSWIPL_PACKAGES_QT=OFF \
+        -DSWIPL_PACKAGES_X=OFF \
         "${SRC_DIR}"
 
     cmake --build . \
