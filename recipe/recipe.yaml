@@ -12,6 +12,8 @@ package:
 source:
   url: https://www.swi-prolog.org/download/stable/src/swipl-${{ version }}.tar.gz
   sha256: 53f428e2d9bbdf30e53b06c9c42def9a13ff82fc36a111d410fc8b0bc889ee2d
+  patches:
+    - patches/0000-cmake-win-path.patch
 
 build:
   # TODO: remove once building at least once on all platforms
