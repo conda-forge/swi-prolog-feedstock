@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -eux
 
-[ -n "$PATH_OVERRIDE" ] && export PATH="$PATH_OVERRIDE"
-
+PATH=$(echo "${PATH_OVERRIDE}" | grep -oiE '^.*h_env/bin')
 BUILD_TYPE=Release
 PIP_OPTS="-vv --no-deps --no-build-isolation --ignore-installed --disable-pip-version-check"
 
@@ -18,6 +17,7 @@ pushd build
         -DCMAKE_PREFIX_PATH="${PREFIX}" \
         -DSWIPL_PACKAGES_QT=OFF \
         -DSWIPL_PACKAGES_X=OFF \
+        -Wno-dev \
         "${SRC_DIR}"
 
     cmake --build . \

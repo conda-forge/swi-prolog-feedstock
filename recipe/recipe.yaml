@@ -37,10 +37,12 @@ requirements:
         - m2-base
     - if: build_platform != target_platform
       then:
-        - python
         - cross-python_${{ target_platform }}
+        - openjdk ${{ openjdk_min }}.*
+        - python
         - setuptools
         - setuptools-scm
+        - unixodbc
 
   host:
     - gmp
