@@ -31,8 +31,9 @@ requirements:
         - ${{ stdlib("c") }}
         - pkg-config
       else:
-        - ${{ compiler("m2_c") }}
-        - ${{ compiler("m2_cxx") }}
+        - ${{ compiler("m2w64_c") }}
+        - ${{ compiler("m2w64_cxx") }}
+        - ${{ stdlib("m2w64_c") }}
 
   host:
     - gmp
