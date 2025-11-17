@@ -16,6 +16,18 @@ libarchive:
 - '3.8'
 libjpeg_turbo:
 - '3'
+m2w64_c_compiler:
+- gcc
+m2w64_c_compiler_version:
+- '14'
+m2w64_c_stdlib:
+- m2w64-sysroot
+m2w64_c_stdlib_version:
+- '12'
+m2w64_cxx_compiler:
+- gxx
+m2w64_cxx_compiler_version:
+- '14'
 openssl:
 - '3.5'
 pcre2:
