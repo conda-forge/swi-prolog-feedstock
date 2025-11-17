@@ -43,6 +43,7 @@ requirements:
         - setuptools-scm
 
   host:
+    - gmp
     - libarchive
     - libdb
     - libjpeg-turbo
@@ -59,7 +60,6 @@ requirements:
     # os/arch
     - if: unix
       then:
-        - gmp
         - libedit
         - ncurses
         - ossuuid
@@ -82,9 +82,6 @@ requirements:
         - xorg-libxrender
         - xorg-libxt
         - xorg-xorgproto
-    - if: win
-      then:
-        - m2-gmp
 
   run:
     - openjdk >=${{ openjdk_min }}
