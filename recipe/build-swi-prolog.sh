@@ -3,7 +3,7 @@ set -eux
 
 _UNAME=$(uname)
 
-BUILD_TYPE=PGO
+BUILD_TYPE=Release
 
 CONDA_PY=$("${PYTHON}" -c 'import sys; v = sys.version_info; print(f"{v[0]}.{v[1]}")')
 PYTHON_INCLUDE_DIR="${PREFIX}/include/python${CONDA_PY}"
@@ -11,7 +11,6 @@ PYTHON_LIBRARY="${PREFIX}/lib/libpython${CONDA_PY}${SHLIB_EXT}"
 PIP_OPTS="-vv --no-deps --no-build-isolation --ignore-installed --disable-pip-version-check"
 
 if [[ "${_UNAME}" == "Darwin" ]]; then
-    BUILD_TYPE=Release
     # #27: getting errors like
     #
     #   $SRC_DIR/packages/xpce/src/x11/fshell.c:151:42: error: use of undeclared identifier 'caddr_t'
@@ -23,7 +22,10 @@ if [[ "${_UNAME}" == "Darwin" ]]; then
         CMAKE_ARGS="${CMAKE_ARGS} -DRUN_RESULT=0 -DRUN_RESULT__TRYRUN_OUTPUT=0"
     fi
 else
-    CMAKE_ARGS="${CMAKE_ARGS} -DINSTALL_TESTS=ON"
+    if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" != "1" ]]; then
+        BUILD_TYPE=PGO
+        CMAKE_ARGS="${CMAKE_ARGS} -DINSTALL_TESTS=ON"
+    fi
 fi
 
 mkdir build
