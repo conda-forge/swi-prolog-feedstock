@@ -19,7 +19,7 @@ if [[ "${_UNAME}" == "Darwin" ]]; then
     #
     CMAKE_ARGS="${CMAKE_ARGS} -DSWIPL_PACKAGES_X=OFF"
 
-    if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
+    if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == 1 ]]; then
         CMAKE_ARGS="${CMAKE_ARGS} -DRUN_RESULT=0 RUN_RESULT__TRYRUN_OUTPUT=0"
     fi
 else
