@@ -34,7 +34,7 @@ requirements:
         - ${{ compiler("m2w64_c") }}
         - ${{ compiler("m2w64_cxx") }}
         - ${{ stdlib("m2w64_c") }}
-        - m2-bash
+        - posix
     - if: build_platform != target_platform
       then:
         - python
