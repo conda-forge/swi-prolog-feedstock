@@ -62,7 +62,6 @@ requirements:
       then:
         - libedit
         - ncurses
-        - ossuuid
         - readline
         - unixodbc
     - if: linux
@@ -82,6 +81,9 @@ requirements:
         - xorg-libxrender
         - xorg-libxt
         - xorg-xorgproto
+    - if: unix and build_platform == target_platform
+      then:
+        - ossuuid
 
   run:
     - openjdk >=${{ openjdk_min }}
