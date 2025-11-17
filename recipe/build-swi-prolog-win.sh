@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -eux
 
+[ -n "$PATH_OVERRIDE" ] && export PATH="$PATH_OVERRIDE"
+
 BUILD_TYPE=Release
 
 mkdir build
