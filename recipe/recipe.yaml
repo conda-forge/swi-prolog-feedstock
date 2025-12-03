@@ -3,6 +3,7 @@ schema_version: 1
 
 context:
   version: "10.0.0"
+  openjdk_min: "17"
 
 package:
   name: swi-prolog
@@ -11,57 +12,127 @@ package:
 source:
   url: https://www.swi-prolog.org/download/stable/src/swipl-${{ version }}.tar.gz
   sha256: 98c552c48fc8b44dcd4440abbfed632cceb75055fde267be12f340bea8106590
+  patches:
+    - patches/0000-cmake-win-path.patch
 
 build:
-  number: 0
-  skip: not linux
+  # TODO: remove once building at least once on all platforms
+  skip: not is_python_min
+  number: 2
+  script:
+    file: build-swi-prolog
 
 requirements:
   build:
-    - ${{ compiler("c") }}
-    - ${{ compiler("cxx") }}
-    - ${{ stdlib("c") }}
-    - autoconf
     - cmake
     - ninja
+    - pkg-config
+    - if: unix
+      then:
+        - ${{ compiler("c") }}
+        - ${{ compiler("cxx") }}
+        - ${{ stdlib("c") }}
+      else:
+        - ${{ compiler("m2w64_c") }}
+        - ${{ compiler("m2w64_cxx") }}
+        - ${{ stdlib("m2w64_c") }}
+        - m2-base
+    - if: build_platform != target_platform
+      then:
+        - cross-python_${{ target_platform }}
+        - openjdk ${{ openjdk_min }}.*
+        - python
+        - setuptools
+        - setuptools-scm
+        - unixodbc
+
   host:
-    - curl
-    - freetype
     - gmp
     - libarchive
-    - libedit
+    - libdb
     - libjpeg-turbo
-    - libunwind
-    - libuuid
-    - ncurses
-    - openjdk
+    - openjdk ${{ openjdk_min }}.*
     - openssl
-    - readline
-    - unixodbc
-    - xorg-libice
-    - xorg-libx11
-    - xorg-libxaw
-    - xorg-libxext
-    - xorg-libxft
-    - xorg-libxinerama
-    - xorg-libxmu
-    - xorg-libxpm
-    - xorg-libxrender
-    - xorg-libxt
+    - pcre2
     - yaml
     - zlib
+    # python
+    - pip
+    - python
+    - setuptools >=42
+    - setuptools-scm
+    # os/arch
+    - if: unix
+      then:
+        - libedit
+        - ncurses
+        - readline
+        - unixodbc
+    - if: linux
+      then:
+        - fontconfig
+        - gperftools
+        - libxcrypt
+        - xorg-libice
+        - xorg-libsm
+        - xorg-libx11
+        - xorg-libxaw
+        - xorg-libxext
+        - xorg-libxft
+        - xorg-libxinerama
+        - xorg-libxmu
+        - xorg-libxpm
+        - xorg-libxrender
+        - xorg-libxt
+        - xorg-xorgproto
+    - if: unix and build_platform == target_platform
+      then:
+        - ossuuid
+
   run:
-    - gmp
-    - ncurses
-    - zlib
+    - openjdk >=${{ openjdk_min }}
+    - python
+    - if: unix
+      then:
+        - ncurses
+    - if: linux
+      then:
+        - gperftools
 
 tests:
   - script:
       - swipl -g "writeln('hello world')." -t 'halt.'
+      - if: linux
+        then:
+          - swipl -g test_installation,halt -t halt
+  - python:
+      imports:
+        - janus_swi
+        - swiplserver
+      pip_check: true
+  - requirements:
+      run:
+        - pytest-cov
+    files:
+      source:
+        - packages/mqi/python/test_prologserver.py
+      recipe:
+        - test_janus.py
+    script:
+      - coverage run --source janus_swi --source swiplserver -m pytest -vv --tb=long --color=yes
+      - coverage report --show-missing --skip-covered --fail-under=92
 
 about:
-  license: BSD-2-Clause
-  license_file: LICENSE
+  license: BSD-2-Clause AND MIT AND Unicode-DFS-2015
+  license_file:
+    - LICENSE
+    - packages/jpl/LICENSE
+    - packages/mqi/python/LICENSE
+    - packages/mqi/python/swiplserver/LICENSE
+    - packages/sweep/LICENSE
+    - packages/utf8proc/LICENSE
+    - src/Tests/COPYING
+
   summary: A comprehensive Prolog implementation
   homepage: https://www.swi-prolog.org
   repository: https://github.com/SWI-Prolog/swipl-devel
