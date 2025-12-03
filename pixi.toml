@@ -5,7 +5,7 @@
 
 [workspace]
 name = "swi-prolog-feedstock"
-version = "3.53.0"  # conda-smithy version used to generate this file
+version = "3.53.3"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/swi-prolog-feedstock"
 authors = ["@conda-forge/swi-prolog"]
 channels = ["conda-forge"]
