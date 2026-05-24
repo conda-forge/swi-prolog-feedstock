@@ -1,0 +1,16 @@
+diff --git a/cmake/CheckEnv.cmake b/cmake/CheckEnv.cmake
+index d84699e..aa95835 100644
+--- a/cmake/CheckEnv.cmake
++++ b/cmake/CheckEnv.cmake
+@@ -27,11 +27,6 @@ if(UNIX)
+       conflicting_var(LD_LIBRARY_PATH)
+     endif()
+   endif()
+-elseif(WIN32)
+-  if(DEFINED ENV{PATH} AND
+-     "$ENV{PATH}" MATCHES swipl|swi-prolog)
+-    conflicting_var(PATH)
+-  endif()
+ endif()
+ 
+ if(DEFINED ENV{SWI_HOME_DIR} AND
